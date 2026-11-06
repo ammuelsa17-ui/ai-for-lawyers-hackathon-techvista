@@ -1,0 +1,15 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: casepilot-api
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_PATH=/app/data/casepilot.db
+      - APP_VERSION=0.1.0
+      - DEBUG=True
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
